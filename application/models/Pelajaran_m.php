@@ -12,4 +12,9 @@ class Pelajaran_m extends Eloquent
     protected $primaryKey = 'kd_pembelajaran';
     public $autoincrement = false;
     protected $keyType = 'varchar';    
+
+    public function pelajaran()
+    {
+        return $this->hasMany('Pembelajaran_m', 'kd_pembelajaran', 'kd_pembelajaran');
+    }    
 }

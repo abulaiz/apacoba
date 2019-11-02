@@ -13,4 +13,12 @@ class Pembelajaran_m extends Eloquent
     {
         return $this->belongsTo('Peran_m', 'id_peran');
     }    
+
+    public function actor(){
+    	return $this->belongsTo('Actor_m', 'nip', 'nip');
+    }
+
+    public function pelajaran(){
+        return $this->belongsTo('Pelajaran_m', 'kd_pembelajaran', 'kd_pembelajaran');
+    }    
 }

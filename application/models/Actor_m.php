@@ -12,4 +12,9 @@ class Actor_m extends Eloquent
     protected $primaryKey = 'nip';
     public $autoincrement = false;
     protected $keyType = 'varchar';     
+
+    public function pelajaran()
+    {
+        return $this->hasMany('Pembelajaran_m', 'nip', 'nip');
+    }        
 }

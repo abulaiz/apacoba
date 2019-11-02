@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">    
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -87,7 +89,7 @@
         <!-- Left side column. contains the sidebar -->
         <aside class="main-sidebar">
             <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
+<!--             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
@@ -95,7 +97,7 @@
                         </button>
                     </span>
                 </div>
-            </form>
+            </form> -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Main Navigation</li>
@@ -148,11 +150,16 @@
     <script src="<?= base_url() ?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>
     <script src="<?= base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- DataTables -->
+    <script src="<?= base_url() ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>    
     <script>
         $(document).ready(function() {
             $('.sidebar-menu').tree()
             //bootstrap WYSIHTML5 - text editor
             $('.textarea').wysihtml5()
+
+            $('#datatables').DataTable();
         })
     </script>
 </body>

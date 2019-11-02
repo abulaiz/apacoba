@@ -10,6 +10,7 @@ class Peran extends CI_Controller
         $this->load->model('Pembelajaran_m');
         $this->load->model('Peran_m');
         $this->load->library('form_validation');
+        $this->load->model('Actor_m');
     }
     public function index()
     {
@@ -43,7 +44,7 @@ class Peran extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->template->load('template', 'peran/add');
         } else {
-            Actor_m::create([
+            Peran_m::create([
                 'nama_peran' => $this->input->post('nama_peran'),
             ]);
             echo "<script>window.location='" . site_url('peran') . "';</script>";

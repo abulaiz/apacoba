@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        Tabels
+        <?= $info->nama ?> - <?= $info->nip ?>
     </h1>
 
 </section>
@@ -10,19 +10,15 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Data Peran</h3>
-            <div class="pull-right">
-                <a href="<?= site_url('peran/add') ?>" class="btn btn-primary btn flat">
-                    <i class="fa fa-user-plus"></i> Create
-                </a>
-            </div>
-
+            <h3 class="box-title">Data Pembelajaran</h3>
         </div>
         <div class="box-body table-responsive">
             <table class="table table-bordered table-striped" id="datatables">
                 <thead>
                     <tr>
-                        <th>Nama Peran</th>
+                        <th>Kode Pembelajaran</th>
+                        <th>Judul</th>
+                        <th>Peran dalam Tim</th>
                         <th>Action</th> 
                     </tr>
                 </thead>
@@ -30,15 +26,16 @@
                     <?php
                     foreach ($row as $key => $data) { ?>
                         <tr>
-                            <td><?= $data->nama_peran ?>.</td>
+                            <td><?= $data->kd_pembelajaran ?>.</td>
+                            <td><?= $data->pelajaran->judul ?></td>
+                            <td><?= $data->peran->nama_peran ?></td>
                             <td class="text-center" width="160px">
-                                <form action="<?= site_url('peran/del') ?>" method="post">
-                                    <a href="<?= site_url('peran/edit/' . $data->id) ?>" class="btn btn-primary btn-xs">
-                                        <i class="fa fa-pencil"></i> Update
-                                    </a>
-                                    <input type="hidden" name="id" value="<?= $data->id ?>">
+                                <form action="<?= site_url('actor/del_pembelajaran') ?>" method="post">
+                                    <input type="hidden" name="nip" value="<?= $data->nip ?>">
+                                    <input type="hidden" name="kd_pembelajaran" value="<?= $data->kd_pembelajaran ?>">
+                                    <input type="hidden" name="id_peran" value="<?= $data->id_peran ?>">
                                     <button onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-danger btn-xs">
-                                        <i class="fa fa-trash"></i> Delete
+                                        <i class="fa fa-trash"></i> Keluarkan
                                     </button>
                                 </form>
                             </td>
@@ -49,6 +46,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
 </section>

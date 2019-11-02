@@ -10,6 +10,7 @@ class Actor extends CI_Controller
         $this->load->model('Pelajaran_m');
         $this->load->model('Pembelajaran_m');
         $this->load->model('Actor_m');
+        $this->load->model('Peran_m');
         $this->load->library('form_validation');
     }
     public function index()
@@ -124,5 +125,26 @@ class Actor extends CI_Controller
             echo "<script>alert('Data berhasil dihapus');</script>";
         }
         echo "<script>window.location='" . site_url('actor') . "';</script>";
+    }
+
+    public function pembelajaran($id){
+        $d = Actor_m::find($id);
+        $data['row'] = $d->pelajaran;
+        $data['info'] = $d;
+        $this->template->load('template', 'actor/pembelajaran/index', $data);
+    }
+
+    public function del_pembelajaran(){
+        $nip = $this->input->post('nip');
+        $id_peran = $this->input->post('id_peran');
+        $kd_pembelajaran = $this->input->post('kd_pembelajaran');    
+        // echo $nip." - ".$id_peran." - ".$kd_pembelajaran;
+        // die();
+        Pembelajaran_m::where('nip', $nip)
+                        ->where('kd_pembelajaran', $kd_pembelajaran)
+                        ->where('id_peran', $id_peran)
+                        ->delete();
+        echo "<script>alert('Data berhasil dihapus');</script>";
+        echo "<script>window.location='" . site_url('actor/pembelajaran/'.$nip) . "';</script>";                                        
     }
 }
